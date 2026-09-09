@@ -1,0 +1,107 @@
+:root {
+  --text: #292929;
+  --text-h: #0f0f0f;
+  --bg: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+  --card-bg: #d9d9d9;
+  --border: #bfbfbf;
+  --code-bg: #e6e6e6;
+  --accent: #4caf50;
+  --accent-bg: #4caf5026;
+  --accent-border: #4caf5080;
+  --social-bg: #d9d9d999;
+  --shadow: 0px 10px 25px #0000002e;
+
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media (max-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+}
+.dark {
+  --text: #cdcdcd;
+  --text-h: #ffffff;
+ --bg: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%);
+  --card-bg: linear-gradient(135deg, #383838 0%, #9e9e9e33 100%);
+  --border: #444444;
+  --code-bg: #2a2a2a;
+  --accent: #4caf50;
+  --accent-bg: #4caf5033;
+  --accent-border: #4caf5099;
+  --social-bg: #38383880;
+  --shadow: 0px 12px 30px #00000080;
+}
+
+
+#root {
+  /* width: 1126px; */
+  padding:0 2rem;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  /* margin: 32px 0; */
+  @media (max-width: 1024px) {
+    /* font-size: 36px; */
+    /* margin: 20px 0; */
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  /* margin: 0 0 8px; */
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}

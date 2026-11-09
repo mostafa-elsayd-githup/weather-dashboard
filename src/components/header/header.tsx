@@ -3,9 +3,13 @@ import Themetoggle from "./themetoggle";
 
 function Header() {
   return (
-    <div className="flex items-center mt-4 max-[630px]:flex-col-reverse ">
+    <div className="grid items-center grid-cols-12 mt-4 ">
+     <div className="col-span-2 md:col-span-2">
       <Themetoggle />
+     </div>
+     <div className="col-span-10 md:col-span-10">
       <SearchInput />
+     </div>
     </div>
   );
 }

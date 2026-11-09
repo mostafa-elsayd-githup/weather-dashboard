@@ -1,25 +1,26 @@
-import { useState } from "react";
+import { MoonIcon, SunIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 
 function Themetoggle() {
-  const [DarkTheme, setDarkTheme] = useState(false);
+  const [dark, setDark] = useState<boolean>(() => {
+    const dark = localStorage.getItem("Theme");
+    return dark === "dark";
+  });
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+    localStorage.setItem("Theme", dark ? "dark" : "light");
+  }, [dark]);
   const ToggleTheme = () => {
-    setDarkTheme((e) => !e);
-    document.documentElement.classList.toggle("dark");
+    setDark((e) => !e);
   };
   return (
-    <div className="mr-4 w-fit items-center max-[630px]:mt-6">
-      <button onClick={ToggleTheme}>
-        <span className="contents text-gray-400">
-          {DarkTheme ? "Iight Mode" : "Dark Mode"}
-          {"  "}
-        </span>
-        <input
-          type="checkbox"
-          defaultChecked
-          className="toggle w-10 rounded-2xl mb-1"
-        />
-      </button>
-    </div>
+    <button onClick={ToggleTheme} className="cursor-pointer">
+      {dark ? (
+        <SunIcon size={25} className="text-(--sunrise)" />
+      ) : (
+        <MoonIcon size={25} className="text-[#8a97b6]" />
+      )}
+    </button>
   );
 }
 

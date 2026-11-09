@@ -36,15 +36,15 @@ function SearchInput() {
   };
 
   return (
-  <div className="flex-6 w-full m-auto mr-4 flex flex-col gap-1 relative">
-    <div className="relative text-start shadow-2xl shadow-black w-full rounded-3xl border-[1px] border-[#4443432c]">
+  <div className="w-full m-auto mr-4 flex flex-col gap-1 relative">
+    <div className="relative text-start shadow-(--shadow) w-full rounded-3xl border border-(--border) overflow-hidden">
       <input
         onKeyDown={handleSearch}
         onChange={(e) => {
           setcity(e.target.value);
           if (errorMessage) setErrorMessage(null);
         }}
-        className="w-full h-10 pl-15 bg-transparent text-[var(--text-h)] placeholder:text-[var(--text)] placeholder:text-[1rem] placeholder:opacity-30 focus:outline-0"
+        className="w-full h-10 pl-15 bg-(--bg) text-(--text-h) placeholder:text-(--text) placeholder:text-[1rem] placeholder:opacity-30"
         type="search"
         value={city}
         placeholder="Search for your preferred city..."

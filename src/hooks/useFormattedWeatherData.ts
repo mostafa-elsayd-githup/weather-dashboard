@@ -21,6 +21,7 @@ export const useFormattedWeatherData = () => {
       hour: "numeric",
       minute: "2-digit",
     }) || "";
+
   return {
     Actual_Temperature,
     Feels_Like_Temperature,
@@ -31,4 +32,13 @@ export const useFormattedWeatherData = () => {
     Sunrice,
     SunSet,
   };
+};
+export const useformateTableDate = (data: string) => {
+  const date = new Date(data);
+  const formattedDate = date.toLocaleDateString("en-US", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+  });
+  return { formattedDate };
 };

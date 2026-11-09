@@ -1,40 +1,45 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { WeatherContext } from "../weatherContext/contextProvider";
 import { useContext } from "react";
 import { GetDetails } from "../getIconAndDetals";
+import { useformateTableDate } from "../../hooks/useFormattedWeatherData";
 function DaysForcast() {
   const { weatherData } = useContext(WeatherContext);
   const timeData: string[] = weatherData?.daily.time ?? [];
   const degree: string = weatherData?.current_units.temperature_2m ?? "";
   return (
-    <div className="p-5  text-white dark:bg-[var(--card-bg)] dark:text-[var(--text)] shadow-[11px_10px_15px_-8px_black] flex-1 rounded-3xl  border-[1px]  border-[#44434336]">
-      <h1 className="pt-8">{timeData.length} Days Forecast : </h1>
-      <div>
-        {timeData.map((data: string, index: number) => {
-          const Code: number = weatherData?.daily.weather_code[index] ?? 0;
-          const { icon, color } = GetDetails(Code);
-          const max_temperature: number =
-            weatherData?.daily.temperature_2m_max[index] ?? 0;
-          const date = new Date(data);
-          const formattedDate = date.toLocaleDateString("en-US", {
-            weekday: "short",
-            day: "numeric",
-            month: "short",
-          });
-          return (
-            <div className="mt-10 flex justify-around text-2xl pb-5 not-last:border-b-[0.4px] dark:border-[var(--border)] ">
-              <h2>
-                <FontAwesomeIcon className={`text-4xl ${color}`} icon={icon} />
-              </h2>
-              <p className="">
-                {max_temperature}
-                {degree}{" "}
-              </p>
-              <span>{formattedDate}</span>
-            </div>
-          );
-        })}
-      </div>
+    <div className="p-5 bg-(--card-bg) text-(--text) shadow-(--shadow) border border-(--border) rounded-3xl">
+      <h1 className="w-fit text-xl md:text-2xl text-(--text-h)">
+        Days Forecast {timeData.length}
+      </h1>
+
+      <table className="w-full table-fixed text-center mt-5">
+        <tbody>
+          {timeData.map((data: string, index: number) => {
+            const Code: number = weatherData?.daily.weather_code[index] ?? 0;
+            const { icon, color } = GetDetails(Code);
+            const Icon = icon;
+            const max_temperature: number =
+              weatherData?.daily.temperature_2m_max[index] ?? 0;
+            const { formattedDate } = useformateTableDate(data);
+            return (
+              <tr
+                key={index}
+                className="border-(--border) not-last-of-type:border-b hover:scale-[1.02] transition-all"
+              >
+                <td className="flex justify-center p-4">
+                  <Icon size={40} className={`md:hidden ${color}`} />
+                  {<Icon size={45} className={`hidden md:block ${color}`} />}
+                </td>
+                <td>
+                  {max_temperature}
+                  {degree}
+                </td>
+                <td>{formattedDate} </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }

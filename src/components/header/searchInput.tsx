@@ -44,7 +44,7 @@ function SearchInput() {
           setcity(e.target.value);
           if (errorMessage) setErrorMessage(null);
         }}
-        className="w-full h-10 pl-15 bg-(--bg) text-(--text-h) placeholder:text-(--text) placeholder:text-[1rem] placeholder:opacity-30"
+        className="w-full h-10 pl-15 bg-(--bg) text-(--text-h) placeholder:text-(--text) placeholder:text-[1rem] placeholder:opacity-30 focus:outline-0"
         type="search"
         value={city}
         placeholder="Search for your preferred city..."
